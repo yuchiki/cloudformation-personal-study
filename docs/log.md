@@ -116,10 +116,13 @@ SQS と SNS が作成された。
 
 `cdk destroy` で削除できた。
 
-
-## Aの設定をSDKに書き直してみる
-
-https://dev.classmethod.jp/articles/create-vpc-with-cdk-python/
-
-
 # C 多層アーキテクチャで RDB+web-server+LB を構築してみる
+
+C_MutilStack_CDK の中で実験した。
+
+` cdk deploy '*' --require-approval never` で実行
+` cdk destroy '*' --force` で破壊
+
+
+- ALB　から apacheにアクセスすることに成功した。
+- スタック間の依存関係を正しく記述しないと、ライフタイムが長いものがライフタイムに依存してしまう事態になりかねない。暗黙的に依存解決されるが、コード中にも依存を明記し、それと依存解決の向きが逆転していたら明確にsynthが落ちるようにしておいた方が安全そう
